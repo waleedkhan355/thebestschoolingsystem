@@ -10,11 +10,11 @@ export default function Footer() {
           <div>
             <div className="flex items-center gap-3 mb-4">
               <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center p-0.5 overflow-hidden shadow-inner">
-                <img src="/logo-crest.svg?v=3" className="w-full h-full object-contain" alt="The Best Schooling Academy Logo" />
+                <img src="/logo-crest.svg?v=3" className="w-full h-full object-contain" alt="YOSU Logo" />
               </div>
               <div>
-                <p className="font-serif font-bold text-white">THE BEST SCHOOLING ACADEMY</p>
-                <p className="text-[hsl(43_90%_52%)] text-xs tracking-widest uppercase">Academy</p>
+                <p className="font-serif font-bold text-white">YOSU INTERNATIONAL</p>
+                <p className="text-[hsl(43_90%_52%)] text-xs tracking-widest uppercase">School</p>
               </div>
             </div>
             <p className="text-sm text-green-200 leading-relaxed">
@@ -67,7 +67,7 @@ export default function Footer() {
       </div>
       <div className="border-t border-[hsl(152_40%_16%)] py-4">
         <p className="text-center text-xs text-green-300 flex items-center justify-center gap-1">
-          © {new Date().getFullYear()} The Best Schooling Academy. Made with <Heart className="w-3 h-3 text-red-400 fill-red-400" /> in Swat Valley.
+          © {new Date().getFullYear()} YOSU International School. Made with <Heart className="w-3 h-3 text-red-400 fill-red-400" /> in Swat Valley.
         </p>
       </div>
     </footer>

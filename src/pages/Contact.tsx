@@ -21,7 +21,7 @@ export default function Contact() {
     setTimeout(() => setSubmitted(false), 5000);
   };
 
-  const whatsappLink = `https://wa.me/923449757557?text=${encodeURIComponent("Hello The Best Schooling Academy, I would like to enquire about admissions.")}`;
+  const whatsappLink = `https://wa.me/923449757557?text=${encodeURIComponent("Hello YOSU International School, I would like to enquire about admissions.")}`;
   const mapLink = "https://maps.google.com/?q=Shah+je+market+opposite+Arshad+Super+store+Deolai+Swat+Pakistan";
 
   return (

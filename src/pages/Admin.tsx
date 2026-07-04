@@ -45,7 +45,7 @@ export default function Admin() {
               <Shield className="w-8 h-8 text-[hsl(152_55%_10%)]" />
             </div>
             <h1 className="font-serif text-2xl font-bold text-foreground">Admin Desk</h1>
-            <p className="text-muted-foreground text-sm mt-1">The Best Schooling Academy</p>
+            <p className="text-muted-foreground text-sm mt-1">YOSU International School</p>
           </div>
           <form onSubmit={handleLogin} className="space-y-4">
             <div>
@@ -88,7 +88,7 @@ export default function Admin() {
             <Shield className="w-6 h-6 text-[hsl(43_90%_52%)]" />
             <div>
               <p className="font-serif font-bold text-white">Admin Desk</p>
-              <p className="text-green-300 text-xs">The Best Schooling Academy</p>
+              <p className="text-green-300 text-xs">YOSU International School</p>
             </div>
           </div>
           <button

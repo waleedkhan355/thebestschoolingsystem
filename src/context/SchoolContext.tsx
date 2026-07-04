@@ -33,7 +33,7 @@ interface SchoolContextType {
 }
 
 const defaultSettings: SchoolSettings = {
-  heroTitle: "THE BEST SCHOOLING ACADEMY",
+  heroTitle: "YOSU INTERNATIONAL SCHOOL",
   heroSubtitle: "Nurturing Excellence, Building Futures",
   phone: "+92 344 9757557",
   email: "info@d.yosu.edu.pk",

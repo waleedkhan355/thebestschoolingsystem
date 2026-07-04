@@ -95,7 +95,7 @@ export default function Events() {
         <motion.div initial={{ opacity: 0, y: isMobile ? -5 : -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: isMobile ? 0.35 : 0.6 }} className="text-center mb-12">
           <h1 className="font-serif text-4xl sm:text-5xl font-bold text-foreground mb-3">Events Gallery</h1>
           <div className="gold-divider max-w-[100px] mx-auto" />
-          <p className="text-muted-foreground mt-4 max-w-lg mx-auto">Celebrating achievements, milestones, and school life at The Best Schooling Academy.</p>
+          <p className="text-muted-foreground mt-4 max-w-lg mx-auto">Celebrating achievements, milestones, and school life at YOSU International.</p>
         </motion.div>
 
         {/* Filter */}

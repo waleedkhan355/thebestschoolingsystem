@@ -57,7 +57,7 @@ export default function About() {
             <blockquote className="text-center">
               <p className="text-foreground text-lg sm:text-xl leading-relaxed italic font-serif mb-6">
                 "Our vision has always been to bring world-class education to the children of Swat — a region of extraordinary potential and resilience.
-                At The Best Schooling Academy, every child is a scholar in the making. We believe the mountains of Swat should produce minds that conquer
+                At YOSU International School, every child is a scholar in the making. We believe the mountains of Swat should produce minds that conquer
                 the world's greatest challenges, armed with knowledge, integrity, and unwavering character."
               </p>
               <div className="flex items-center justify-center gap-4">
@@ -66,7 +66,7 @@ export default function About() {
                 </div>
                 <div className="text-left">
                   <p className="font-semibold text-foreground">The Founder</p>
-                  <p className="text-muted-foreground text-sm">The Best Schooling Academy, Deolai</p>
+                  <p className="text-muted-foreground text-sm">YOSU International School, Deolai</p>
                 </div>
               </div>
             </blockquote>
@@ -150,7 +150,7 @@ export default function About() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {[
-              { year: "Founded", event: "The Best Schooling Academy established in Deolai, Swat" },
+              { year: "Founded", event: "YOSU International School established in Deolai, Swat" },
               { year: "English Medium", event: "Launched full English-medium instruction across all classes" },
               { year: "Computer Labs", event: "Opened 3 state-of-the-art computer labs for digital literacy" },
               { year: "STEM Programme", event: "Introduced dedicated STEM curriculum with science experiments" },
