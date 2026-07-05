@@ -9,8 +9,8 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           <div>
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center p-0.5 overflow-hidden shadow-inner">
-                <img src="/logo-crest.svg?v=3" className="w-full h-full object-contain" alt="The Best Schooling Academy Logo" />
+              <div className="w-10 h-10 rounded-full bg-[hsl(43_90%_52%)] flex items-center justify-center shadow-inner">
+                <GraduationCap className="w-6 h-6 text-[hsl(152_55%_10%)]" />
               </div>
               <div>
                 <p className="font-serif font-bold text-white">THE BEST SCHOOLING ACADEMY</p>
