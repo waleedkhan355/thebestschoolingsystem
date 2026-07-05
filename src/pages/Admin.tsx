@@ -1,17 +1,19 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Shield, Bell, CalendarDays, GraduationCap, Settings2, Lock } from "lucide-react";
+import { Shield, Bell, CalendarDays, GraduationCap, Settings2, Lock, Star } from "lucide-react";
 import AdminNotices from "@/components/admin/AdminNotices";
 import AdminEvents from "@/components/admin/AdminEvents";
 import AdminResults from "@/components/admin/AdminResults";
 import AdminSettings from "@/components/admin/AdminSettings";
+import AdminFeedback from "@/components/admin/AdminFeedback";
 
-const ADMIN_PASSWORD = "yosu@2026";
+const ADMIN_PASSWORD = "school@2026";
 
 const tabs = [
   { id: "notices", label: "Notice Desk", icon: Bell },
   { id: "events", label: "Events & Media", icon: CalendarDays },
   { id: "results", label: "Result Registry", icon: GraduationCap },
+  { id: "feedback", label: "Feedback Desk", icon: Star },
   { id: "settings", label: "About & Settings", icon: Settings2 },
 ];
 
@@ -132,6 +134,7 @@ export default function Admin() {
         {activeTab === "notices" && <AdminNotices />}
         {activeTab === "events" && <AdminEvents />}
         {activeTab === "results" && <AdminResults />}
+        {activeTab === "feedback" && <AdminFeedback />}
         {activeTab === "settings" && <AdminSettings />}
       </div>
     </div>

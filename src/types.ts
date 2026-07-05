@@ -46,3 +46,12 @@ export interface SchoolSettings {
   computerLabs: number;
   libraryBooks: number;
 }
+
+export interface Feedback {
+  id: string;
+  name: string;
+  rating: number;
+  comment: string;
+  timestamp: number;
+}
+

@@ -13,12 +13,13 @@ import {
   orderBy,
 } from "firebase/firestore";
 import { db } from "@/lib/firebase";
-import { Notification, Result, SchoolEvent, SchoolSettings } from "@/types";
+import { Notification, Result, SchoolEvent, SchoolSettings, Feedback } from "@/types";
 
 interface SchoolContextType {
   notifications: Notification[];
   results: Result[];
   events: SchoolEvent[];
+  feedbacks: Feedback[];
   settings: SchoolSettings;
   addNotification: (n: Omit<Notification, "id" | "timestamp">) => Promise<void>;
   updateNotification: (id: string, data: Partial<Notification>) => Promise<void>;
@@ -30,6 +31,8 @@ interface SchoolContextType {
   updateEvent: (id: string, data: Partial<SchoolEvent>) => Promise<void>;
   deleteEvent: (id: string) => Promise<void>;
   updateSettings: (data: Partial<SchoolSettings>) => Promise<void>;
+  addFeedback: (f: Omit<Feedback, "id" | "timestamp">) => Promise<void>;
+  deleteFeedback: (id: string) => Promise<void>;
 }
 
 const defaultSettings: SchoolSettings = {
@@ -52,6 +55,7 @@ export function SchoolProvider({ children }: { children: ReactNode }) {
   const [notifications, setNotifications] = useState<Notification[]>([]);
   const [results, setResults] = useState<Result[]>([]);
   const [events, setEvents] = useState<SchoolEvent[]>([]);
+  const [feedbacks, setFeedbacks] = useState<Feedback[]>([]);
   const [settings, setSettings] = useState<SchoolSettings>(defaultSettings);
 
   useEffect(() => {
@@ -74,6 +78,14 @@ export function SchoolProvider({ children }: { children: ReactNode }) {
     const q = query(collection(db, "events"), orderBy("date", "desc"));
     const unsub = onSnapshot(q, (snap) => {
       setEvents(snap.docs.map((d) => ({ id: d.id, ...d.data() } as SchoolEvent)));
+    });
+    return unsub;
+  }, []);
+
+  useEffect(() => {
+    const q = query(collection(db, "feedbacks"), orderBy("timestamp", "desc"));
+    const unsub = onSnapshot(q, (snap) => {
+      setFeedbacks(snap.docs.map((d) => ({ id: d.id, ...d.data() } as Feedback)));
     });
     return unsub;
   }, []);
@@ -134,12 +146,21 @@ export function SchoolProvider({ children }: { children: ReactNode }) {
     await setDoc(doc(db, "schoolSettings", "main"), { ...settings, ...data });
   };
 
+  const addFeedback = async (f: Omit<Feedback, "id" | "timestamp">) => {
+    await addDoc(collection(db, "feedbacks"), { ...f, timestamp: Date.now() });
+  };
+
+  const deleteFeedback = async (id: string) => {
+    await deleteDoc(doc(db, "feedbacks", id));
+  };
+
   return (
     <SchoolContext.Provider
       value={{
         notifications,
         results,
         events,
+        feedbacks,
         settings,
         addNotification,
         updateNotification,
@@ -151,6 +172,8 @@ export function SchoolProvider({ children }: { children: ReactNode }) {
         updateEvent,
         deleteEvent,
         updateSettings,
+        addFeedback,
+        deleteFeedback,
       }}
     >
       {children}
