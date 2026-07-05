@@ -1,17 +1,19 @@
 import { useState, useEffect } from "react";
 import { useSchool } from "@/context/SchoolContext";
-import { Save, School, Phone, Mail, MapPin, BookOpen, Users, Monitor, Library } from "lucide-react";
+import { Save, School, Phone, Mail, MapPin, BookOpen, Users, Monitor, Library, Image as ImageIcon } from "lucide-react";
 import toast from "react-hot-toast";
 import { SchoolSettings } from "@/types";
 
 export default function AdminSettings() {
-  const { settings, updateSettings } = useSchool();
+  const { settings, updateSettings, events = [] } = useSchool();
   const [form, setForm] = useState<SchoolSettings>(settings);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     setForm(settings);
   }, [settings]);
+
+  const galleryImages = events.filter((e) => e.mediaType === "image" && e.mediaUrl);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -115,6 +117,52 @@ export default function AdminSettings() {
                     </button>
                   );
                 })}
+              </div>
+
+              {/* Gallery Photos Picker */}
+              <div className="mb-4">
+                <p className="text-xs font-semibold text-muted-foreground mb-2 flex items-center gap-1.5">
+                  <ImageIcon className="w-3.5 h-3.5 text-primary" /> Select from Gallery/Event Images:
+                </p>
+                {galleryImages.length > 0 ? (
+                  <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-2 max-h-36 overflow-y-auto p-1.5 border border-border/60 bg-muted/30 rounded-xl">
+                    {galleryImages.map((event) => {
+                      const isSelected = form.heroBgImage === event.mediaUrl;
+                      return (
+                        <button
+                          key={event.id}
+                          type="button"
+                          onClick={() => setForm({ ...form, heroBgImage: event.mediaUrl })}
+                          className={`relative aspect-square rounded-lg overflow-hidden border-2 text-left transition-all group ${
+                            isSelected ? "border-primary ring-2 ring-primary/20" : "border-border hover:border-primary/40"
+                          }`}
+                          title={event.title}
+                        >
+                          <img
+                            src={event.mediaUrl}
+                            alt={event.title}
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200"
+                            referrerPolicy="no-referrer"
+                          />
+                          <div className="absolute inset-x-0 bottom-0 bg-black/60 p-1 text-[8px] font-bold text-white truncate text-center">
+                            {event.title}
+                          </div>
+                          {isSelected && (
+                            <div className="absolute top-1 right-1 bg-primary text-primary-foreground w-3.5 h-3.5 rounded-full flex items-center justify-center text-[8px] font-bold">
+                              ✓
+                            </div>
+                          )}
+                        </button>
+                      );
+                    })}
+                  </div>
+                ) : (
+                  <div className="text-center py-4 px-3 border border-dashed border-border rounded-xl bg-muted/20">
+                    <p className="text-xs text-muted-foreground">
+                      No custom event images uploaded yet. Images uploaded in the <strong className="text-primary font-semibold">Events Panel</strong> will show up here to be used as backgrounds!
+                    </p>
+                  </div>
+                )}
               </div>
 
               {/* Custom Image URL Input */}

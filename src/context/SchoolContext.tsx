@@ -50,6 +50,18 @@ const defaultSettings: SchoolSettings = {
   libraryBooks: 5000,
 };
 
+const getInitialSettings = (): SchoolSettings => {
+  try {
+    const cached = typeof window !== "undefined" ? localStorage.getItem("school_settings_cache") : null;
+    if (cached) {
+      return JSON.parse(cached);
+    }
+  } catch (e) {
+    console.error("Failed to parse settings cache", e);
+  }
+  return defaultSettings;
+};
+
 const SchoolContext = createContext<SchoolContextType>({} as SchoolContextType);
 
 export function SchoolProvider({ children }: { children: ReactNode }) {
@@ -57,7 +69,7 @@ export function SchoolProvider({ children }: { children: ReactNode }) {
   const [results, setResults] = useState<Result[]>([]);
   const [events, setEvents] = useState<SchoolEvent[]>([]);
   const [feedbacks, setFeedbacks] = useState<Feedback[]>([]);
-  const [settings, setSettings] = useState<SchoolSettings>(defaultSettings);
+  const [settings, setSettings] = useState<SchoolSettings>(getInitialSettings);
 
   useEffect(() => {
     const q = query(collection(db, "notifications"), orderBy("timestamp", "desc"));
@@ -105,7 +117,13 @@ export function SchoolProvider({ children }: { children: ReactNode }) {
         if (data.address === "Shah je market opposite Arshad Super store, Deolai Swat Pakistan" || !data.address) {
           data.address = "Usman Abad, Mingora, Swat Pakistan";
         }
-        setSettings({ ...defaultSettings, ...data } as SchoolSettings);
+        const updatedSettings = { ...defaultSettings, ...data } as SchoolSettings;
+        setSettings(updatedSettings);
+        try {
+          localStorage.setItem("school_settings_cache", JSON.stringify(updatedSettings));
+        } catch (e) {
+          console.error("Failed to write settings to cache", e);
+        }
       } else {
         await setDoc(ref, defaultSettings);
       }

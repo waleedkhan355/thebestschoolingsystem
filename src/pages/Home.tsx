@@ -33,10 +33,10 @@ function CounterCard({ value, label, icon: Icon }: { value: number; label: strin
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: isMobile ? "0px" : "-50px" }}
       transition={{ duration: isMobile ? 0.35 : 0.5 }}
-      className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-6 text-center shadow-lg hover:border-[hsl(43_90%_52%)]/50 transition-all duration-300"
+      className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-6 text-center shadow-lg transition-all duration-300 hover-glow-gold"
     >
-      <Icon className="w-8 h-8 text-[hsl(43_90%_52%)] mx-auto mb-3 animate-pulse" />
-      <p className="font-serif text-4xl font-bold text-white mb-1">{value.toLocaleString()}+</p>
+      <Icon className="w-8 h-8 text-[hsl(43_90%_52%)] mx-auto mb-3 animate-pulse text-glow-gold" />
+      <p className="font-serif text-4xl font-bold text-white mb-1 text-glow-white">{value.toLocaleString()}+</p>
       <p className="text-green-200 text-xs font-semibold uppercase tracking-wider">{label}</p>
     </motion.div>
   );
@@ -221,9 +221,11 @@ export default function Home() {
     <div>
       {/* Hero Section */}
       <section
-        className="relative min-h-[90vh] flex items-center justify-center parallax-bg"
+        className="relative min-h-[70vh] lg:min-h-[82vh] max-h-[680px] w-full flex items-center justify-center parallax-bg overflow-hidden"
         style={{
-          backgroundImage: `linear-gradient(135deg, hsl(152 55% 10% / 0.92) 0%, hsl(152 45% 18% / 0.85) 50%, hsl(152 35% 22% / 0.80) 100%), url('${settings.heroBgImage || "/primary_campus.jpg"}')`,
+          backgroundImage: `linear-gradient(180deg, rgba(15, 23, 42, 0.35) 0%, rgba(15, 23, 42, 0.75) 100%), url('${settings.heroBgImage || "/primary_campus.jpg"}')`,
+          backgroundSize: "cover",
+          backgroundPosition: "center center",
         }}
         data-testid="section-hero"
       >
@@ -243,7 +245,7 @@ export default function Home() {
             initial={{ opacity: 0, y: isMobile ? 8 : 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: isMobile ? 0.4 : 0.7, delay: isMobile ? 0.05 : 0.1 }}
-            className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-4 tracking-tight"
+            className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-4 tracking-tight text-glow-white animate-premium-float"
           >
             {settings.heroTitle}
           </motion.h1>
@@ -252,14 +254,14 @@ export default function Home() {
             initial={{ scaleX: isMobile ? 0.9 : 0 }}
             animate={{ scaleX: 1 }}
             transition={{ duration: isMobile ? 0.4 : 0.6, delay: isMobile ? 0.1 : 0.3 }}
-            className="gold-divider max-w-xs mx-auto my-6"
+            className="gold-divider max-w-xs mx-auto my-6 shadow-[0_0_12px_rgba(251,191,36,0.6)]"
           />
 
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: isMobile ? 0.4 : 0.7, delay: isMobile ? 0.15 : 0.4 }}
-            className="text-xl sm:text-2xl text-green-100 font-light italic mb-8 max-w-3xl mx-auto"
+            className="text-xl sm:text-2xl text-green-100 font-light italic mb-8 max-w-3xl mx-auto text-glow-white"
           >
             "{settings.heroSubtitle}"
           </motion.p>
@@ -272,14 +274,14 @@ export default function Home() {
           >
             <Link
               href="/contact"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-[hsl(43_90%_52%)] text-[hsl(152_55%_10%)] font-bold rounded-lg hover:bg-[hsl(43_90%_45%)] transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 group"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-[hsl(43_90%_52%)] text-[hsl(152_55%_10%)] font-extrabold rounded-lg hover:bg-[hsl(43_90%_45%)] transition-all shadow-[0_0_20px_rgba(251,191,36,0.35)] hover:shadow-[0_0_30px_rgba(251,191,36,0.6)] hover-glow-gold hover:-translate-y-0.5 group"
               data-testid="link-admissions"
             >
               Admissions Open 2026 <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
             <Link
               href="/results"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-white/40 text-white font-semibold rounded-lg hover:bg-white/10 hover:border-white transition-all"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-white/40 text-white font-semibold rounded-lg hover:bg-white/10 hover:border-white hover-glow-green transition-all shadow-md"
               data-testid="link-results"
             >
               Check Online Results <BookOpen className="w-5 h-5" />
@@ -391,8 +393,8 @@ export default function Home() {
                   onClick={() => setExpandedProgram(isExpanded ? null : p.id)}
                   className={`bg-white rounded-2xl p-6 sm:p-8 border transition-all duration-300 cursor-pointer text-left relative overflow-hidden group select-none ${
                     isExpanded 
-                      ? "border-primary shadow-md ring-1 ring-primary/30" 
-                      : "border-border shadow-sm hover:border-primary/40 hover:shadow-md"
+                      ? "border-primary shadow-md ring-1 ring-primary/30 glow-green-pulse" 
+                      : "border-border shadow-sm hover-glow-green"
                   }`}
                 >
                   <div className="flex justify-between items-start gap-4">
@@ -480,7 +482,7 @@ export default function Home() {
                   whileInView={{ opacity: 1, scale: 1, y: 0 }}
                   viewport={{ once: true, margin: "-40px" }}
                   transition={{ delay: idx * 0.05, duration: 0.4 }}
-                  className={`${fac.className} bg-card hover:bg-card/80 border border-border rounded-2xl p-6 sm:p-8 shadow-sm hover:shadow-md transition-all duration-300 relative group overflow-hidden flex flex-col justify-between`}
+                  className={`${fac.className} bg-card hover:bg-card/80 border border-border rounded-2xl p-6 sm:p-8 shadow-sm transition-all duration-300 hover-glow-green relative group overflow-hidden flex flex-col justify-between`}
                 >
                   <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-2xl group-hover:scale-125 transition-transform duration-500" />
                   
