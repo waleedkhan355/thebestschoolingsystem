@@ -33,7 +33,7 @@ export default function AdminFeedback() {
     <div className="space-y-6 text-left">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-card p-6 border border-border rounded-2xl shadow-sm">
         <div>
-          <h2 className="font-serif text-2xl font-bold text-foreground">Play Store Live Reviews</h2>
+          <h2 className="font-serif text-2xl font-bold text-foreground">Live Parent Reviews</h2>
           <p className="text-sm text-muted-foreground mt-1">
             Moderate, review, and manage live feedback submitted by parents and academy visitors.
           </p>

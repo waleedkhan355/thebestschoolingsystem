@@ -86,7 +86,7 @@ export default function FeedbackHub() {
       
       toast({
         title: "Feedback Submitted!",
-        description: "Thank you for rating us on our Play Store live portal.",
+        description: "Thank you for rating us on our live portal.",
       });
       
       setName("");
@@ -117,7 +117,7 @@ export default function FeedbackHub() {
             Public Rating Portal
           </span>
           <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold mb-3 text-foreground">
-            Play Store Live Feedback
+            Academy Live Feedback
           </h2>
           <div className="gold-divider max-w-[150px] mx-auto mb-4" />
           <p className="text-muted-foreground text-sm sm:text-base max-w-2xl mx-auto">
@@ -125,7 +125,7 @@ export default function FeedbackHub() {
           </p>
         </div>
 
-        {/* Play Store Style Dashboard */}
+        {/* Live Feedback Dashboard */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start bg-card border border-border rounded-3xl p-6 sm:p-8 shadow-md">
           
           {/* Left Column: Rating breakdown */}
@@ -198,7 +198,7 @@ export default function FeedbackHub() {
                   className="bg-secondary/40 border border-border rounded-2xl p-6 relative overflow-hidden"
                 >
                   <div className="flex justify-between items-center mb-6">
-                    <h4 className="font-serif text-lg font-bold text-foreground">Write Your Play Store Review</h4>
+                    <h4 className="font-serif text-lg font-bold text-foreground">Write Your Live Review</h4>
                     <button 
                       onClick={() => setShowForm(false)}
                       className="text-xs text-muted-foreground hover:text-foreground font-semibold px-2 py-1 rounded hover:bg-muted transition-colors"

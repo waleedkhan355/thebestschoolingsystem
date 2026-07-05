@@ -558,7 +558,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Play Store Live Feedback Hub */}
+      {/* Academy Live Feedback Hub */}
       <FeedbackHub />
 
       {/* Interactive FAQ Accordion */}
